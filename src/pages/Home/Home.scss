@@ -1,0 +1,41 @@
+.home {
+  margin: 0;
+  padding: 0;
+
+  &__header {
+    padding: 0 15px 0 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    &::after {
+      content: "";
+      width: 100%;
+      background:black;
+      position: absolute;
+      bottom:1px;
+      height: 1px;
+      left: 0;
+      opacity: 0.1;
+    }
+  }
+
+  &__title {
+    font-size: 28px;
+  }
+
+  &__searchPanel {
+    display: flex;
+    justify-content: space-between;
+
+    input {
+      width: 241px;
+      height: 33px;
+      background: rgba(0, 0, 0, 0.0001);
+      border: 0.5px solid rgba(0, 0, 0, 0.24);
+    }
+  }
+
+
+
+}
