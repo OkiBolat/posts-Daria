@@ -1,15 +1,14 @@
-import React from "react";
-import { cn } from "../../helpers/reactBem";
-import "./Post.scss";
+import React from 'react';
+import { cn } from '../../helpers/reactBem';
+import './Post.scss';
 
 const post = cn('post');
 
-const Post = ({text = "no text"}) => {
-  return (
-    <div className={post()}>
-      {text}
-      </div>
-  )
-}
+const Post = ({ image = null, text = 'no text' }) => (
+  <div className={post()}>
+    {text}
+    <img src={image} alt="" />
+  </div>
+);
 
 export default Post;

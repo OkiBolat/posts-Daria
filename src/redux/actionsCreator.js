@@ -1,13 +1,13 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
-import { postsServices } from "../services/postServices"; 
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import { postsServices } from '../services/postServices';
 
-export const getPostsThunk = createAsyncThunk("products/cards", async function () {
+export const getPostsThunk = createAsyncThunk('products/cards', async () => {
   const response = await postsServices.getPosts();
-  const data = await response.data
+  const data = await response.data;
   return data;
-})
+});
 
-export const addPostThunk = createAsyncThunk("products/switchFav", async (obj) => {
-  const resp = await postsServices.addPost({obj})
-  return resp.data
-})
+export const addPostThunk = createAsyncThunk('products/switchFav', async (obj) => {
+  const resp = await postsServices.addPost({ obj });
+  return resp.data;
+});
