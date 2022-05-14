@@ -3,27 +3,27 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getPostsThunk } from '../../redux/actionsCreator';
 import Post from '../Post/Post';
-import "./PostsList.scss"
+import './PostsList.scss';
 
-const Posts = cn("posts")
+const Posts = cn('posts');
 
 const PostsList = () => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
-  const posts = useSelector(state => state.posts.posts)
-  console.log(posts)
+  const posts = useSelector((state) => state.posts.posts);
+  // console.log(posts);
 
   useEffect(() => {
-    dispatch(getPostsThunk())
-  },[dispatch])
+    dispatch(getPostsThunk());
+  }, [dispatch]);
 
   return (
     <div className={Posts()}>
-      {posts?.map(post => (
-        <Post key={post.id} image={post.avatar} text={post.postText}/>
+      {posts?.map((post) => (
+        <Post key={post.id} image={post.avatar} text={post.postText} />
       ))}
     </div>
   );
-}
+};
 
 export default PostsList;

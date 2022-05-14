@@ -9,21 +9,27 @@ const toolkitSlice = createSlice({
   },
   extraReducers: {
     [getPostsThunk.pending]: (state) => {
-      state.requestInProgress = true;
+      const newState = state;
+      newState.requestInProgress = true;
     },
     [getPostsThunk.fulfilled]: (state, action) => {
-      state.posts = action.payload;
-      state.requestInProgress = false;
+      const newState = state;
+      newState.posts = action.payload;
+      newState.requestInProgress = false;
     },
     [getPostsThunk.rejected]: () => {
+      // eslint-disable-next-line no-console
       console.error('Not response');
     },
     [addPostThunk.fulfilled]: (state, action) => {
-      state.detailedCard = action.payload;
+      const newState = state;
+      newState.detailedCard = action.payload;
     },
     [addPostThunk.fulfilled]: (state, action) => {
-      state.cards = state.cards.map((item) => (item.id === action.payload.id ? action.payload : item));
-      state.filteredCards = state.filteredCards.map((item) => (item.id === action.payload.id ? action.payload : item));
+      state.cards = state.cards.map((item) => (
+        item.id === action.payload.id ? action.payload : item));
+      state.filteredCards = state.filteredCards.map((item) => (
+        item.id === action.payload.id ? action.payload : item));
     },
   },
 });
