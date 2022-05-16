@@ -26,9 +26,10 @@ const toolkitSlice = createSlice({
       newState.detailedCard = action.payload;
     },
     [addPostThunk.fulfilled]: (state, action) => {
-      state.cards = state.cards.map((item) => (
+      const newState = state;
+      newState.cards = state.cards.map((item) => (
         item.id === action.payload.id ? action.payload : item));
-      state.filteredCards = state.filteredCards.map((item) => (
+      newState.filteredCards = state.filteredCards.map((item) => (
         item.id === action.payload.id ? action.payload : item));
     },
   },

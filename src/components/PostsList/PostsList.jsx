@@ -11,7 +11,6 @@ const PostsList = () => {
   const dispatch = useDispatch();
 
   const posts = useSelector((state) => state.posts.posts);
-  // console.log(posts);
 
   useEffect(() => {
     dispatch(getPostsThunk());
@@ -20,7 +19,7 @@ const PostsList = () => {
   return (
     <div className={Posts()}>
       {posts?.map((post) => (
-        <Post key={post.id} image={post.avatar} text={post.postText} />
+        <Post key={post.id} name={post.name} image={post.avatar} text={post.postText} />
       ))}
     </div>
   );
