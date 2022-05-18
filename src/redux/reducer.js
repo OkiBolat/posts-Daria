@@ -23,14 +23,7 @@ const toolkitSlice = createSlice({
     },
     [addPostThunk.fulfilled]: (state, action) => {
       const newState = state;
-      newState.detailedCard = action.payload;
-    },
-    [addPostThunk.fulfilled]: (state, action) => {
-      const newState = state;
-      newState.cards = state.cards.map((item) => (
-        item.id === action.payload.id ? action.payload : item));
-      newState.filteredCards = state.filteredCards.map((item) => (
-        item.id === action.payload.id ? action.payload : item));
+      newState.posts = [action.payload, ...newState.posts];
     },
   },
 });

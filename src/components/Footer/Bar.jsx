@@ -1,14 +1,29 @@
 /* eslint-disable react/button-has-type */
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { cn } from '../../helpers/reactBem';
+import { addPostThunk } from '../../redux/actionsCreator';
 import './Bar.scss';
 
 const bar = cn('bar');
 
 const Bar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  // eslint-disable-next-line no-unused-vars
-  const [fontWeightValue, setFontWeightValue] = useState('light');
+  const [postData, setPostData] = useState('');
+  const dispatch = useDispatch();
+
+  const addPost = () => {
+    if (postData === '') return;
+    dispatch(addPostThunk({
+      createdAt: new Date(),
+      name: 'Rosemarie Predovic',
+      avatar: '',
+      postText: postData,
+      fontWeight: false,
+      id: '1',
+    }));
+    setPostData('');
+  };
 
   return (
     <div style={isOpen === false ? { left: '-570px' } : {}} className={bar()}>
@@ -26,16 +41,9 @@ const Bar = () => {
         </button>
       )}
       <div className={bar('addForm')}>
-        <form action="">
-          <input placeholder="Что у вас нового?" className={bar('textArea')} type="text" />
-          <div>
-            <h5 style={{ color: '#ffff', margin: 0, padding: 0 }}>Font weight</h5>
-            <input type="radio" name="bold" id="" />
-            <span>bold</span>
-            <input type="radio" name="light" id="" />
-            <span>Light</span>
-          </div>
-          <button>
+        <form onChange={(e) => e.preventDefault()} action="">
+          <input value={postData} onChange={(e) => setPostData(e.target.value)} placeholder="Что у вас нового?" className={bar('textArea')} type="text" />
+          <button onClick={addPost}>
             Publish
           </button>
         </form>
