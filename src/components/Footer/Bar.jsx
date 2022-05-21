@@ -9,20 +9,20 @@ const bar = cn('bar');
 
 const Bar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [postData, setPostData] = useState('');
+  const [postText, setPostText] = useState('');
   const dispatch = useDispatch();
 
   const addPost = () => {
-    if (postData === '') return;
+    if (postText === '') return;
+
     dispatch(addPostThunk({
       createdAt: new Date(),
       name: 'Rosemarie Predovic',
-      avatar: '',
-      postText: postData,
+      postText,
       fontWeight: false,
-      id: '1',
     }));
-    setPostData('');
+    setPostText('');
+    setIsOpen(false);
   };
 
   return (
@@ -42,7 +42,7 @@ const Bar = () => {
       )}
       <div className={bar('addForm')}>
         <form onChange={(e) => e.preventDefault()} action="">
-          <input value={postData} onChange={(e) => setPostData(e.target.value)} placeholder="Что у вас нового?" className={bar('textArea')} type="text" />
+          <input value={postText} onChange={(e) => setPostText(e.target.value)} placeholder="Что у вас нового?" className={bar('textArea')} type="text" />
           <button onClick={addPost}>
             Publish
           </button>

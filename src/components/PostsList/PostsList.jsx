@@ -10,7 +10,7 @@ const Posts = cn('posts');
 const PostsList = () => {
   const dispatch = useDispatch();
 
-  const posts = useSelector((state) => state.posts.posts);
+  const posts = useSelector((state) => state.posts.filteredPosts);
 
   useEffect(() => {
     dispatch(getPostsThunk());
@@ -19,7 +19,13 @@ const PostsList = () => {
   return (
     <div className={Posts()}>
       {posts?.map((post) => (
-        <Post key={post.id} name={post.name} image={post.avatar} text={post.postText} />
+        <Post
+          date={post.date}
+          key={post.id}
+          name={post.name}
+          image={post.avatar}
+          text={post.createdAt}
+        />
       ))}
     </div>
   );
