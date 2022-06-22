@@ -1,15 +1,14 @@
+/* eslint-disable object-curly-newline */
 import React from 'react';
 import { cn } from '../../helpers/reactBem';
 import './Post.scss';
 
 const post = cn('post');
 
-const Post = ({
-  name, image = null, date, text = 'no text',
-}) => {
+const Post = ({ date, name, image, text = 'no text' }) => {
   const newD = new Date(date);
   return (
-    <div classsName={post()}>
+    <div className={post()}>
       <div className={post('header')}>
         <div className={post('info')}>
           <img src={image} alt="icon" />
@@ -22,7 +21,7 @@ const Post = ({
           <img src="" alt="" />
         </div>
       </div>
-      <span>{newD.getFullYear()}</span>
+      <span className={post('date')}>{newD.getFullYear()}</span>
     </div>
   );
 };

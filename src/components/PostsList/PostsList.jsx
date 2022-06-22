@@ -14,17 +14,19 @@ const PostsList = () => {
 
   useEffect(() => {
     dispatch(getPostsThunk());
+    return () => {
+    };
   }, [dispatch]);
 
   return (
     <div className={Posts()}>
       {posts?.map((post) => (
         <Post
-          date={post.date}
-          key={post.id}
+          date={post.createdAt}
+          key={post.createdAt}
           name={post.name}
           image={post.avatar}
-          text={post.createdAt}
+          text={post.text}
         />
       ))}
     </div>

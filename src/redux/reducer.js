@@ -34,11 +34,22 @@ const toolkitSlice = createSlice({
       // eslint-disable-next-line no-console
       console.error('Not response');
     },
+    [addPostThunk.pending]: (state) => {
+      const newState = state;
+      newState.requestInProgress = true;
+    },
     [addPostThunk.fulfilled]: (state, action) => {
       const newState = state;
       newState.posts = [action.payload, ...newState.posts];
       newState.filteredPosts = [action.payload, ...newState.posts];
+      newState.requestInProgress = false;
     },
+    [addPostThunk.rejected]: (action) => {
+      const err = new Error(action);
+      // eslint-disable-next-line no-console
+      console.log(err);
+    },
+
   },
 });
 
